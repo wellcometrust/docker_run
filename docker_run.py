@@ -21,6 +21,7 @@ import sys
 
 ROOT = os.environ['DOCKER_RUN_ROOT']
 
+
 def _aws_credentials_args():
     """
     Returns the arguments to add to ``docker run`` for sharing AWS credentials
