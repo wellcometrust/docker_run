@@ -5,12 +5,10 @@ Run a Docker image used by a Make task.
 
 This script does _not_ run inside a container, so it has to work on any
 system.  This means:
-
  1. No third-party Python libraries!
  2. Python 2 and Python 3 compatible.
 
 Arguments after the two flags are passed directly to ``docker run``.
-
 
 """
 
@@ -19,7 +17,9 @@ import os
 import subprocess
 import sys
 
-ROOT = os.environ['DOCKER_RUN_ROOT']
+# Root of the Git repository
+ROOT = subprocess.check_output([
+    'git', 'rev-parse', '--show-toplevel']).decode('ascii').strip()
 
 
 def _aws_credentials_args():
@@ -109,3 +109,4 @@ if __name__ == '__main__':
             sys.exit(rc)
     except KeyboardInterrupt:
         sys.exit(1)
+
