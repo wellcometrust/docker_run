@@ -11,6 +11,7 @@ system.  This means:
 
 Arguments after the two flags are passed directly to ``docker run``.
 
+
 """
 
 import argparse
@@ -19,6 +20,7 @@ import subprocess
 import sys
 
 ROOT = os.environ['DOCKER_RUN_ROOT']
+
 
 def _aws_credentials_args():
     """
